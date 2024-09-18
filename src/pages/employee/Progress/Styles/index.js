@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   btnAdd: {
     height: 60,
     width: 60,
-    backgroundColor: colors.primary,
-    borderRadius: 20,
+    backgroundColor: colors.branco,
+    borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -87,10 +87,10 @@ const styles = StyleSheet.create({
   btnBack: {
     height: 50,
     width: 50,
-    backgroundColor: "lightgrey",
+    backgroundColor: colors.branco,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 25,
+    borderRadius: 5,
     marginTop: 10,
   },
 
