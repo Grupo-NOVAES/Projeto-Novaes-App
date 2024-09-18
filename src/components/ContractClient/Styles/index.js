@@ -6,12 +6,10 @@ const styles = StyleSheet.create({
     height: 80,
     width: "95%",
     flexDirection: "row",
-    backgroundColor: colors.primary,
+    backgroundColor: colors.branco,
     borderRadius: 5,
     alignItems: "center",
     marginVertical: 10,
-    borderWidth: 2,
-    borderColor: "#052A39",
     marginLeft: 5,
   },
 
@@ -25,13 +23,13 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
-    color: colors.branco,
+    color: colors.primary,
   },
 
   concludedTitle: {
     fontSize: 14,
     width: "95%",
-    color: colors.branco,
+    color: colors.primary,
     height: 20,
     textAlign: "center",
     fontWeight: "bold",
@@ -39,7 +37,7 @@ const styles = StyleSheet.create({
   concluded: {
     fontSize: 13,
     width: "95%",
-    color: colors.branco,
+    color: colors.primary,
     height: 20,
     textAlign: "center",
   },
@@ -47,7 +45,7 @@ const styles = StyleSheet.create({
   timeTitle: {
     fontSize: 14,
     width: "95%",
-    color: colors.branco,
+    color: colors.primary,
     height: 20,
     textAlign: "center",
     fontWeight: "bold",
@@ -55,7 +53,7 @@ const styles = StyleSheet.create({
   time: {
     fontSize: 13,
     width: "95%",
-    color: colors.branco,
+    color: colors.primary,
     height: 20,
     textAlign: "center",
   },

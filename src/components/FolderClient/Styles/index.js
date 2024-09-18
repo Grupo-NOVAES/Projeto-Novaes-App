@@ -6,14 +6,13 @@ const styles = StyleSheet.create({
     height: 70,
     width: "98.5%",
     flexDirection: "row",
-    backgroundColor: colors.primary,
+    backgroundColor: colors.branco,
     borderRadius: 5,
     alignItems: "center",
     marginVertical: 10,
-    borderWidth: 2,
-    borderColor: "#052A39",
     paddingLeft: 10,
     justifyContent: "space-between",
+    elevation:8,
   },
   icon_Folder:{
     marginLeft: 10
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
   },
   Text: {
     fontSize: 19,
-    color: colors.branco,
+    color: colors.primary,
   },
   BtnOption: {
     alignItems: "center",

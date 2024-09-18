@@ -6,14 +6,14 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        borderWidth:2,
-        borderColor:colors.primary,
         height:70,
         width: '100%',
         borderRadius:5,
         padding:10,
         marginBottom:10,
         marginTop:10,
+        backgroundColor: colors.branco,
+        elevation: 5,
     },
     nameFolder:{
         fontSize:18,
@@ -27,8 +27,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         flexDirection:'row',
-       
-
+        justifyContent: 'space-between'
     },
     InformationFile:{
         marginLeft:20,
@@ -36,8 +35,8 @@ const styles = StyleSheet.create({
     Text:{
         fontSize: 16,
         maxWidth:200,
-        maxHeight:20,
-        marginLeft:30,
+        maxHeight:25,
+        color: colors.primary,
     }
     
 });

@@ -43,7 +43,7 @@ const ContractClient = ({
         style={styles.icon_Contract}
         name="document-text"
         size={50}
-        color={colors.contract}
+        color={colors.primary}
       />
 
       <TouchableOpacity

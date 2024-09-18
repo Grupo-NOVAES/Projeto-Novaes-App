@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
   btnPlus: {
     height: 60,
     width: 60,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.branco,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 20,
+    borderRadius: 5,
     marginTop: 5,
   },
 

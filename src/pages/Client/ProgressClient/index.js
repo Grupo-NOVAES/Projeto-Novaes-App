@@ -31,7 +31,7 @@ const ProgressClient = () => {
 
   const route = useRoute();
 
-  useEffect(() => {date-and-time
+  useEffect(() => {
     fetchContracts();
   }, []);
 
@@ -140,7 +140,7 @@ const ProgressClient = () => {
       <View style={styles.btnVoltar}>
       {currentContract && (
           <TouchableOpacity style={styles.btnBack} onPress={handleNavigateBack}>
-            <Icon_Back name="arrow-back" size={40} color={"#000"} />
+            <Icon_Back name="arrow-back" size={40} color={colors.noncinza} />
           </TouchableOpacity>
         )}
       </View>
