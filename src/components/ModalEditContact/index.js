@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, View, Text, TextInput, TouchableOpacity } from "react-native";
-import { MaskedTextInput } from "react-native-masked-text";
+import { TextInputMask } from "react-native-masked-text";
 import styles from "./Styles";
 
 const ModalEditContact = ({ visible, onClose, onSubmit, initialData }) => {
@@ -47,16 +47,17 @@ const ModalEditContact = ({ visible, onClose, onSubmit, initialData }) => {
               onChangeText={setLogin}
               style={styles.inputs}
             />
-            <MaskedTextInput
-              style={styles.inputs}
-              type={'custom'}
-              options={{
-                mask: '(99) 99999-9999'
-              }}
-              placeholder="Telefone"
-              value={phoneNumber}
-              onChangeText={setPhoneNumber}
-              placeholderTextColor={"#6B6D71"}
+              <TextInputMask
+                style={styles.inputs}
+                type={'cel-phone'}
+                options={{
+                  maskType: 'BRL',
+                  withDDD: true,
+                  dddMask: '(99) '
+                }}
+                value={phoneNumber}
+                onChangeText={setPhoneNumber}
+                placeholderTextColor={"#6B6D71"}
               fontSize={15}
               keyboardType="phone-pad"
               maxLength={15}

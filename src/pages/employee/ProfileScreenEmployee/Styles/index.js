@@ -4,6 +4,7 @@ import colors from '../../../../color'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent:'space-between'
   },
   container_foto_user: {
     backgroundColor: colors.login,
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
   imagem_camera: {
     borderRadius: 100,
-    backgroundColor: colors.verde,
+    backgroundColor: colors.azul_claro,
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
   main: {
-    height: "82.75%",
+    height: "80%",
     flexDirection: "column",
     justifyContent: "center",
   },
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     width: 35,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.verde,
+    backgroundColor: colors.azul_claro,
     borderRadius: 150,
     padding: 3,
     position: 'absolute',

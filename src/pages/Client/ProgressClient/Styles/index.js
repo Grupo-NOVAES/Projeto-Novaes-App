@@ -4,6 +4,10 @@ import colors from "../../../../color";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent:'space-between'
+  },
+  main:{
+    height:'80%'
   },
   btnVoltar: {
     height: 70,

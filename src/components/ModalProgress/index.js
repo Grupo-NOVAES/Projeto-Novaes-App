@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import { View, Text, Modal, TextInput, TouchableOpacity , Alert} from 'react-native';
+import React from 'react';
+import { View, Text, Modal, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import styles from './Styles';
 
-const ModalProgress = ({ visible, onClose, onAdd, isEditing, title, setTitle, description, setDescription, dateHour, setDateHour, currentContractId }) => { 
-  const [ time , setTime ] = useState(null);
-  
+const ModalProgress = ({ visible, onClose, onAdd, isEditing, title, setTitle, description, setDescription, dateHour, setDateHour, currentContractId }) => {
   const showDatePicker = () => {
     DateTimePickerAndroid.open({
       value: new Date(),
       onChange: (event, selectedDate) => {
         if (event.type === "set" && selectedDate) {
-          setTime(new Date(selectedDate));
+          setDateHour(new Date(selectedDate)); // Atualize o estado do componente pai
         }
       },
       mode: "date",
@@ -20,24 +18,16 @@ const ModalProgress = ({ visible, onClose, onAdd, isEditing, title, setTitle, de
   };
 
   const handleAddProgress = () => {
-    console.log("Dados a serem enviados add:", { title, description, time, contract_id: currentContractId });
-    let verify = verifyIfEmpty();
-    console.log(verify);
-    if(verify){
-      onAdd({ title, description, time, contract_id: currentContractId });
-    }else{
-      Alert.alert("Alguns campos podem estar vazios...","");
+    console.log("Dados a serem enviados add:", { title, description, dateHour, contract_id: currentContractId });
+    if (verifyIfEmpty()) {
+      onAdd({ title, description, dateHour, contract_id: currentContractId });
+    } else {
+      Alert.alert("Alguns campos podem estar vazios...", "");
     }
   };
 
-  function verifyIfEmpty(){
-    console.log(title);
-    console.log(description);
-    console.log(time);
-    if(title === "" || description == "" || time == ""){
-      return false;
-    }
-    return true;
+  function verifyIfEmpty() {
+    return title !== "" && description !== "" && dateHour !== null;
   }
 
   return (
@@ -58,7 +48,7 @@ const ModalProgress = ({ visible, onClose, onAdd, isEditing, title, setTitle, de
             placeholderTextColor={'#6B6D71'}
             fontSize={15}
           />
-          
+
           <TextInput
             style={styles.inputDescricao}
             placeholder="Descrição"
@@ -73,7 +63,7 @@ const ModalProgress = ({ visible, onClose, onAdd, isEditing, title, setTitle, de
             <TextInput
               style={styles.inputDataHora}
               placeholder="Data"
-              value={time ? time.toLocaleDateString() : ''}
+              value={dateHour ? dateHour.toLocaleDateString() : ''}
               editable={false}
               placeholderTextColor={'#6B6D71'}
               fontSize={15}
@@ -86,14 +76,14 @@ const ModalProgress = ({ visible, onClose, onAdd, isEditing, title, setTitle, de
               onPress={handleAddProgress}
               testID={"save-button"}
             >
-              <Text style={{color: 'white', fontSize: 18}}>Salvar</Text>
+              <Text style={{ color: 'white', fontSize: 18 }}>Salvar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.btnCancel}
               onPress={onClose}
             >
-              <Text style={{color: 'white', fontSize: 16.5}}>Voltar</Text>
+              <Text style={{ color: 'white', fontSize: 16.5 }}>Voltar</Text>
             </TouchableOpacity>
           </View>
         </View>

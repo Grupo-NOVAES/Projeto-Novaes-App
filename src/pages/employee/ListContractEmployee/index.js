@@ -135,65 +135,66 @@ const ListContractEmployee = () => {
   return (
     <View style={styles.container}>
       <Header />
+      <View style={styles.bodyContainer}>
+              <LoadingScreen visible={loading} />
 
-      <LoadingScreen visible={loading} />
-
-      {!loading && (
-        <View style={styles.listContainer}>
-          <FlatList
-            data={contracts}
-            ListEmptyComponent={() => (
-              <View style={styles.emptyMessageContainer}>
-                <Text style={styles.emptyMessage}>Não há contratos.</Text>
-                <Icon_NoContract
-                  name="frowno"
-                  size={80}
-                  color={colors.cinzaClaro}
+        {!loading && (
+          <View style={styles.listContainer}>
+            <FlatList
+              data={contracts}
+              ListEmptyComponent={() => (
+                <View style={styles.emptyMessageContainer}>
+                  <Text style={styles.emptyMessage}>Não há contratos.</Text>
+                  <Icon_NoContract
+                    name="frowno"
+                    size={80}
+                    color={colors.cinzaClaro}
+                  />
+                </View>
+              )}
+              renderItem={({ item }) => (
+                <Contract
+                  contract={item}
+                  onPress={() => handleContractPress(item)}
+                  onDeleteContract={() => handleDeleteContract(item.id)}
+                  onEditContract={() => handleEditContract(item)}
                 />
-              </View>
-            )}
-            renderItem={({ item }) => (
-              <Contract
-                contract={item}
-                onPress={() => handleContractPress(item)}
-                onDeleteContract={() => handleDeleteContract(item.id)}
-                onEditContract={() => handleEditContract(item)}
-              />
-            )}
-            keyExtractor={(item) => (item.id ? item.id.toString() : "")}
-          />
-        </View>
-      )}
+              )}
+              keyExtractor={(item) => (item.id ? item.id.toString() : "")}
+            />
+          </View>
+        )}
 
-      <ModalAddContract
-        visible={isModalAddProgressVisible}
-        onClose={() => {
-          setIsModalAddProgressVisible(false);
-          setIsEditing(false);
-        }}
-        onSave={() => {
-          setIsModalAddProgressVisible(false);
-          setIsEditing(false);
-          fetchContracts();
-        }}
-        isEditing={isEditing}
-        title={title}
-        setTitle={setTitle}
-        email={email}
-        setEmail={setEmail}
-        time={time}
-        setTime={setTime}
-        contract={editingContract}
-      />
+        <ModalAddContract
+          visible={isModalAddProgressVisible}
+          onClose={() => {
+            setIsModalAddProgressVisible(false);
+            setIsEditing(false);
+          }}
+          onSave={() => {
+            setIsModalAddProgressVisible(false);
+            setIsEditing(false);
+            fetchContracts();
+          }}
+          isEditing={isEditing}
+          title={title}
+          setTitle={setTitle}
+          email={email}
+          setEmail={setEmail}
+          time={time}
+          setTime={setTime}
+          contract={editingContract}
+        />
 
-      <TouchableOpacity
-        style={styles.btnAdd}
-        nomeContracto="Adicionar"
-        onPress={() => setIsModalAddProgressVisible(true)}
-        testID={"add-Button"}
-      >
-        <Icon_Plus name="plus" size={50} color={colors.primary} />
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btnAdd}
+          nomeContracto="Adicionar"
+          onPress={() => setIsModalAddProgressVisible(true)}
+          testID={"add-Button"}
+        >
+          <Icon_Plus name="plus" size={50} color={colors.primary} />
+        </TouchableOpacity>
+      </View>
       <Footer routeSelected={route.name} />
     </View>
   );

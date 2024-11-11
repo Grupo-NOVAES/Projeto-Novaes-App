@@ -87,6 +87,7 @@ const ProgressClient = () => {
     <View style={styles.container}>
       <Header />
 
+      <View style={styles.main}>
       <View style={styles.contratos}>
         {!currentContract && (
           <FlatList
@@ -143,6 +144,7 @@ const ProgressClient = () => {
             <Icon_Back name="arrow-back" size={40} color={colors.noncinza} />
           </TouchableOpacity>
         )}
+      </View>
       </View>
 
       <Footer routeSelected={route.name} />

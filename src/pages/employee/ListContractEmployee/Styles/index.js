@@ -4,7 +4,7 @@ import colors from "../../../../color";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent:'space-between',
+    justifyContent:'space-between'
   },
 
   BoxStage: {
@@ -55,10 +55,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.branco,
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: 'center',
     borderRadius: 5,
-    elevation: 20,
+    elevation: 9,
     marginVertical: 5,
+    position:'absolute',
+    marginTop:'140%',
+    marginLeft:'5%',
   },
 
   btnEdit: {
@@ -109,7 +111,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   listContainer:{
-    height:600
+    height:'100%'
+  },
+  bodyContainer:{
+    height:'80%'
   }
 });
 

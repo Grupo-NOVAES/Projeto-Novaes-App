@@ -56,7 +56,9 @@ const Progress = () => {
 
   const handleAddProgress = async () => {
     try {
+      console.log(JSON.stringify("data: "+dateHour))
       let updatedProgressList;
+      console.log("testa")
       if (editingIndex !== null) {
         console.log("Editing id do contrato: ", id_contract);
         await ContratoService.editStage(progressList[editingIndex].id, {
@@ -75,13 +77,13 @@ const Progress = () => {
         setEditingIndex(null);
       } else {
         console.log(
-          "id do contrato: ",
-          id_contract,
-          "titulo: ",
+          "id do contrato: "+
+          id_contract+
+          "titulo: "+
           title,
-          "Description: ",
-          description,
-          "dateHour",
+          "Description: "+
+          description+
+          "dateHour"+
           dateHour
         );
         const newDateHour = new Date(dateHour);

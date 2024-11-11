@@ -152,20 +152,20 @@ const ModalEditEmployee = ({
                 <View style={styles.contInput}>
                   <Text style={styles.placeInputs}>Telefone</Text>
                   <TextInputMask
-                    style={styles.inputs}
-                    type={'custom'}
-                    options={{
-                      mask: '(99) 99999-9999'
-                    }}
-                    placeholder="Telefone"
-                    value={phoneNumber}
-                    onChangeText={setPhoneNumber}
-                    editable={editMode}
-                    placeholderTextColor={"#6B6D71"}
-                    fontSize={15}
-                    keyboardType="phone-pad"
-                    maxLength={15}
-                  />
+                style={styles.inputs}
+                type={'cel-phone'}
+                options={{
+                  maskType: 'BRL',
+                  withDDD: true,
+                  dddMask: '(99) '
+                }}
+                value={phoneNumber}
+                onChangeText={setPhoneNumber}
+                placeholderTextColor={"#6B6D71"}
+              fontSize={15}
+              keyboardType="phone-pad"
+              maxLength={15}
+            />
                 </View>
                 <TouchableOpacity style={styles.btnEdit} onPress={handleEdit}>
                   <Icon_Edit name="edit" size={27} color={"white"} />

@@ -9,8 +9,7 @@ import Footer from "../../../components/Footer";
 import ModalPhoto from "../../../components/ModalPhoto";
 import ModalEditContact from "../../../components/ModalEditContact";
 import * as ImagePicker from "expo-image-picker";
-import colors from "../../../color";
-import { saveProfilePhoto, updateEmployee } from "../../../service/InfoManagerService";
+import { updateEmployee } from "../../../service/InfoManagerService";
 import { getProfilePhotoUser, addNewProfilePhoto, userLogged } from "../../../service/UserService"; 
 
 const initDataUser = {

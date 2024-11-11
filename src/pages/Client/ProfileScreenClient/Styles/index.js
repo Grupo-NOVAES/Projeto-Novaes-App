@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent:'space-between'
   },
   container_foto_user: {
     backgroundColor: "#083C52",
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     padding: 7,
   },
   main: {
-    height: "82.75%",
+    height: "80%",
     flexDirection: "column",
     justifyContent: "center",
   },
