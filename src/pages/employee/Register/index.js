@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { View, TextInput, Text, TouchableOpacity, Alert } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import styles from "./Styles";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import { Picker } from '@react-native-picker/picker';
 import DirectoryService from "../../../service/DirectoryService";
 import RegisterService from "../../../service/RegisterService";
-import { TextInputMask } from 'react-native-masked-text'; // Importando TextInputMask
+import { MaskedTextInput } from "react-native-mask-text";
+
 
 export default function Register() {
-  const navigation = useNavigation();
   const route = useRoute();
   const [tipoCadastro, setTipoCadastro] = useState("funcionario");
   const [nome, setNome] = useState("");
@@ -292,20 +291,16 @@ export default function Register() {
               fontSize={15}
             />
 
-            <TextInputMask
+            <MaskedTextInput
+              mask="(99) 99999-9999"
               style={styles.input}
-              type={'custom'}
-              options={{
-                mask: '(99) 99999-9999'
-              }}
               placeholder="Telefone"
               value={telefone}
-              onChangeText={setTelefone}
+              onChangeText={(text, rawText) => setTelefone(rawText)}
               placeholderTextColor={"#6B6D71"}
-              fontSize={15}
               keyboardType="phone-pad"
-              maxLength={15}
             />
+
 
             <TextInput
               style={styles.input}

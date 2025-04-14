@@ -3,14 +3,14 @@ import colors from "../../../color";
 
 const styles = StyleSheet.create({
   container: {
-    height: 80,
+    height: 130,
     width: "96%",
     flexDirection: "row",
     backgroundColor: colors.branco,
     borderRadius: 5,
     alignItems: "center",
     marginVertical: 10,
-    marginLeft: 5,
+    marginLeft: "2%",
     justifyContent: "space-between",
     elevation: 8,
   },

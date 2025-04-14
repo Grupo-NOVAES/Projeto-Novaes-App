@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, View, Text, TextInput, TouchableOpacity } from "react-native";
-import { TextInputMask } from "react-native-masked-text";
+import { MaskedTextInput } from "react-native-mask-text"; // nova lib
 import styles from "./Styles";
 
 const ModalEditContact = ({ visible, onClose, onSubmit, initialData }) => {
@@ -19,7 +19,7 @@ const ModalEditContact = ({ visible, onClose, onSubmit, initialData }) => {
   }, [initialData]);
 
   const handleSubmit = () => {
-    onSubmit({ name, lastname, login,phoneNumber, office });
+    onSubmit({ name, lastname, login, phoneNumber, office });
     onClose();
   };
 
@@ -47,20 +47,14 @@ const ModalEditContact = ({ visible, onClose, onSubmit, initialData }) => {
               onChangeText={setLogin}
               style={styles.inputs}
             />
-              <TextInputMask
-                style={styles.inputs}
-                type={'cel-phone'}
-                options={{
-                  maskType: 'BRL',
-                  withDDD: true,
-                  dddMask: '(99) '
-                }}
-                value={phoneNumber}
-                onChangeText={setPhoneNumber}
-                placeholderTextColor={"#6B6D71"}
-              fontSize={15}
+            <MaskedTextInput
+              mask="(99) 99999-9999"
+              placeholder="Telefone"
+              onChangeText={(text, rawText) => setPhoneNumber(rawText)}
+              value={phoneNumber}
+              style={styles.inputs}
+              placeholderTextColor={"#6B6D71"}
               keyboardType="phone-pad"
-              maxLength={15}
             />
             <Text style={styles.inputOffice}>{office}</Text>
             <View style={styles.buttons}>
@@ -78,4 +72,4 @@ const ModalEditContact = ({ visible, onClose, onSubmit, initialData }) => {
   );
 };
 
-export default ModalEditContact;
+export default ModalEditContact

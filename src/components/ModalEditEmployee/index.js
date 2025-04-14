@@ -5,14 +5,12 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  Image,
   Alert,
 } from "react-native";
 import Icon_Edit from "react-native-vector-icons/MaterialIcons";
-import { TextInputMask } from "react-native-masked-text";
+import { MaskedTextInput } from "react-native-mask-text";
 import styles from "./Styles";
-import colors from "../../color";
-import { editEmployee, deleteEmployee } from "../../service/UserService";
+import { editEmployee } from "../../service/UserService";
 
 const ModalEditEmployee = ({
   visible,
@@ -22,21 +20,19 @@ const ModalEditEmployee = ({
   onSubmit,
   onEdit,
 }) => {
-  const [name, setName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [login, setLogin] = useState(null);
-  const [phoneNumber , setPhoneNumber] = useState(null);
-  const [office, setOffice] = useState(null);
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [login, setLogin] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [office, setOffice] = useState("");
+
   const [photo, setPhoto] = useState(null);
-  const PlaceholderImage = require("../../img/IconProfile.png");
 
   const engineerPhotos = [
     // require("../../img/"),
     // require("../../img/EngineerProfilePhoto/Engineer2.png"),
     // require("../../img/EngineerProfilePhoto/Engineer3.png"),
   ];
-
-  const [selectedImage, setSelectedImage] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [employee, setEmployee] = useState(initialData);
 
@@ -58,17 +54,18 @@ const ModalEditEmployee = ({
   };
 
   useEffect(() => {
-    if (visible) {
+    if (visible && initialData) {
       const randomIndex = Math.floor(Math.random() * engineerPhotos.length);
-      setSelectedImage(engineerPhotos[randomIndex]);
-      setName(initialData.name);
-      setLastName(initialData.lastname);
-      setLogin(initialData.login);
-      setPhoneNumber(initialData.phoneNumber);
-      setOffice(initialData.office);
-      setPhoto(initialData.photo);
+      setSelectedImage(engineerPhotos[randomIndex] || PlaceholderImage);
+      setName(initialData.name || "");
+      setLastName(initialData.lastname || "");
+      setLogin(initialData.login || "");
+      setPhoneNumber(initialData.phoneNumber || "");
+      setOffice(initialData.office || "");
+      setPhoto(initialData.photo || "");
     }
   }, [visible, initialData]);
+  
 
   const handleDelete = () => {
     Alert.alert(
@@ -94,7 +91,7 @@ const ModalEditEmployee = ({
   };
 
   return (
-    <>
+    <View>
       <Modal visible={visible} animationType="slide" transparent>
         <View style={styles.container}>
           <View style={styles.subContainer}>
@@ -151,21 +148,17 @@ const ModalEditEmployee = ({
               <View style={styles.conjuntoInputs}>
                 <View style={styles.contInput}>
                   <Text style={styles.placeInputs}>Telefone</Text>
-                  <TextInputMask
-                style={styles.inputs}
-                type={'cel-phone'}
-                options={{
-                  maskType: 'BRL',
-                  withDDD: true,
-                  dddMask: '(99) '
-                }}
-                value={phoneNumber}
-                onChangeText={setPhoneNumber}
-                placeholderTextColor={"#6B6D71"}
-              fontSize={15}
-              keyboardType="phone-pad"
-              maxLength={15}
-            />
+                  <MaskedTextInput
+                    mask="(99) 99999-9999"
+                    onChangeText={(text, rawText) => setPhoneNumber(rawText)}
+                    value={phoneNumber}
+                    keyboardType="phone-pad"
+                    style={styles.inputs}
+                    placeholder="Telefone"
+                    placeholderTextColor="#6B6D71"
+                    editable={editMode} // se estiver usando modo de edição
+                  />
+
                 </View>
                 <TouchableOpacity style={styles.btnEdit} onPress={handleEdit}>
                   <Icon_Edit name="edit" size={27} color={"white"} />
@@ -194,7 +187,7 @@ const ModalEditEmployee = ({
                   <Text style={styles.txtButton}>Salvar</Text>
                 </TouchableOpacity>
               ) : (
-                <>
+                <View>
                   <View style={styles.containerBtn}>
                     <TouchableOpacity
                       onPress={handleDelete}
@@ -206,13 +199,13 @@ const ModalEditEmployee = ({
                       <Text style={styles.txtButton}>Fechar</Text>
                     </TouchableOpacity>
                   </View>
-                </>
+                </View>
               )}
             </View>
           </View>
         </View>
       </Modal>
-    </>
+    </View>
   );
 };
 

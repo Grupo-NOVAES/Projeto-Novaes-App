@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, View, Text, TextInput, TouchableOpacity } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import DirectoryService from "../../service/DirectoryService";
-import { TextInputMask } from "react-native-masked-text";
+import { MaskedTextInput } from "react-native-mask-text";
 import styles from "./Styles";
 
 const ModalEditClient = ({ visible, onClose, onSubmit, initialData }) => {
@@ -79,21 +79,16 @@ const ModalEditClient = ({ visible, onClose, onSubmit, initialData }) => {
               onChangeText={setLogin}
               style={styles.inputs}
             />
-            <TextInputMask
-                style={styles.inputs}
-                type={'cel-phone'}
-                options={{
-                  maskType: 'BRL',
-                  withDDD: true,
-                  dddMask: '(99) '
-                }}
-                value={phoneNumber}
-                onChangeText={setPhoneNumber}
-                placeholderTextColor={"#6B6D71"}
-              fontSize={15}
+            <MaskedTextInput
+              mask="(99) 99999-9999"
+              onChangeText={(text, rawText) => setPhoneNumber(rawText)}
+              value={phoneNumber}
               keyboardType="phone-pad"
-              maxLength={15}
+              placeholder="Telefone"
+              placeholderTextColor="#6B6D71"
+              style={[styles.inputs, { fontSize: 15 }]}
             />
+
             <TextInput
               placeholder="Empresa"
               value={entrerprise_name}
